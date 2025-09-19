@@ -1,0 +1,206 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    background-color: #000000;
+    color: white;
+    padding: 0px 20px;
+}
+
+header nav {
+    justify-self: start;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header .logo {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+}
+
+header .logo img {
+    max-height: 80px;
+    width: auto;
+}
+
+header .acciones {
+    display: flex;
+    justify-self: end;
+    gap: 15px;
+}
+
+header .acciones a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.contacto {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.contacto h2 {
+  font-size: 2em;
+  margin-bottom: 30px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.formulario-contacto {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form-row input {
+  flex: 1;
+  padding: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-family: inherit;
+}
+
+textarea {
+  padding: 9px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  font-family: inherit;
+  width: 96%;
+}
+
+button {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #000000;
+}
+
+footer {
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    padding: 190px 0;
+    width: 100%;
+    bottom: 0;
+}
+
+.perfil {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.perfil span {
+  font-weight: bold;
+  color: #333;
+}
+
+#cerrar-sesion {
+  padding: 6px 12px;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  height: 32px;
+  font-size: 1rem;
+}
+
+.perfil-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.perfil-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.icono-perfil {
+  width: 25px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.saludo-usuario {
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.menu-perfil {
+  display: none;
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background-color: rgb(0, 0, 0);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 10px;
+  z-index: 1000;
+  min-width: 150px;
+  font-size: 0.9rem;
+}
+
+.menu-perfil a {
+  display: block;
+  padding: 8px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.menu-perfil a:hover {
+  background-color: #000000;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalle de producto - TumTum Clothes</title>
+  <link rel="stylesheet" href="css/producto.css">
+</head>
+<body>
+
+<header>
+    <nav class="menu">
+        <ul>
+            <li><a href="pagp.html">Inicio</a></li>
+            <li><a href="colec.html">Productos</a></li>
+            <li><a href="cont.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <div class="logo">
+        <a href="pagp.html">
+            <img src="img/logo.png" alt="Logo de mi Empresa">
+        </a>
+    </div>
+
+    <div class="acciones" id="acciones-header">
+        <a href="ini.html"><img src="img/Inicio.jpg" alt="Iniciar"></a>
+        <a href="carrito.html"><img src="img/Carro.jpg" alt="Carro"></a>
+    </div>
+</header>
+
+<main>
+  <div class="detalle-producto" 
+       data-nombre="Camiseta de Fútbol Elixir 10 Navy Blue" 
+       data-precio="35990" 
+       data-imagen="img/image.png">
+       
+    <img src="img/image.png" alt="Camiseta de Fútbol Elixir 10 Navy Blue" id="producto-imagen">
+
+    <div class="info">
+      <h1 id="producto-nombre">Camiseta de Fútbol Elixir 10 Navy Blue</h1>
+      <p class="precio" id="producto-precio">$35.990</p>
+      <p id="producto-descripcion">
+        Una camiseta ligera y cómoda ideal para entrenamientos y partidos. 
+        Diseño moderno con tela transpirable.
+      </p>
+
+      <div class="opciones">
+        <label for="talla">Talla:</label>
+        <select id="talla">
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+          <option>XL</option>
+        </select>
+
+        <div class="tabla-talles">
+          <h3>Guía de talles</h3>
+          <table>
+            <thead>
+              <tr><th>Talle</th><th>Ancho</th><th>Largo</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>S</td><td>57 cm</td><td>78 cm</td></tr>
+              <tr><td>M</td><td>60 cm</td><td>80 cm</td></tr>
+              <tr><td>L</td><td>62 cm</td><td>82 cm</td></tr>
+              <tr><td>XL</td><td>65 cm</td><td>84 cm</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <button class="agregar-carrito">Agregar al carrito</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 TumTum Ropa. Todos los derechos reservados.</p>
+</footer>
+
+<script src="java/producto.js"></script>
+</body>
+</html>

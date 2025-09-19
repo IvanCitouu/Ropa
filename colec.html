@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TumTum Clothes</title>
+    <link rel="stylesheet" href="css/colec.css">
+</head>
+<body>
+<header>
+    <nav class="menu">
+        <ul>
+            <li><a href="pagp.html">Inicio</a></li>
+            <li><a href="colec.html">Productos</a></li>
+            <li><a href="cont.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <div class="logo">
+        <a href="pagp.html">
+            <img src="img/logo.png" alt="Logo de mi Empresa">
+        </a>
+    </div>
+
+    <div class="acciones" id="acciones-header">
+        <a href="ini.html"><img src="img/Inicio.jpg" alt="Iniciar"></a>
+        <a href="#" id="mostrar-buscador">
+            <img src="img/Lupa.jpg" alt="Buscar" style="cursor: pointer;">
+        </a>
+        <a href="carrito.html"><img src="img/Carro.jpg" alt="Carro"></a>
+    </div>
+</header>
+
+<div class="buscador-contenedor" style="display: none;" id="campo-busqueda">
+  <div class="input-wrapper">
+    <input type="text" id="buscar" placeholder="Buscar producto...">
+    <button id="cerrar-buscador" title="Cerrar">✖</button>
+  </div>
+  <div id="resultados-busqueda"></div>
+</div>
+
+
+<div class="toolbar">
+    <div class="view-buttons">
+        <button><i class="fa-solid fa-border-all"></i></button>
+        <button><i class="fa-solid fa-grip"></i></button>
+        <button><i class="fa-solid fa-list"></i></button>
+    </div>
+
+    <div class="acciones" id="acciones-header">
+        <label for="sort">ORDENAR POR</label>
+        <select id="sort">
+            <option value="nombre">Nombre</option>
+            <option value="asc">Precio: Menor a Mayor</option>
+            <option value="desc">Precio: Mayor a Menor</option>
+        </select>
+    </div>
+
+    <div class="view-button">
+        <button onclick="cambiarVista('grande', this)">
+            <img src="img/11.png" alt="Vista grande">
+        </button>
+        </button>
+        <button onclick="cambiarVista('mediano', this)">
+            <img src="img/22.png" alt="Vista mediana">
+        </button>
+        <button onclick="cambiarVista('pequeño', this)">
+            <img src="img/33.png" alt="Vista lista">
+        </button>
+    </div>
+
+</div>
+
+<section class="productos">
+    <div class="producto">
+  <a href="producto.html?id=camiseta">
+  <img src="img/image.png" alt="Camiseta">
+  <h2>Camiseta Elixir</h2>
+  <h2>Camiseta de Fútbol Elixir 10 Navy Blue</h2>
+  <p>$35.990</p>
+  </a>
+</div>
+
+    <div class="producto">
+        <img src="img/2.png" alt="Elixir Basket Tank Top">
+        <h2>Elixir Basket Tank Top</h2>
+        <p>$28.000</p>
+    </div>
+
+    <div class="producto">
+        <a href="producto.html?id=beanie">
+        <img src="img/1.png" alt="Beanie">
+        <h2>Elixir Reversible Beanie</h2>
+        <h2>Elixir Reversible Tribal Beanie</h2>
+        <p>$9.990</p>
+        </a>
+    </div>
+
+    <div class="producto">
+        <img src="img/3.png" alt="Elixir White Denim Set JORTS">
+        <h2>Elixir White Denim Set JORTS</h2>
+        <p>$29.990</p>
+    </div>
+
+    <div class="producto">
+        <img src="img/4.png" alt="Elixir Raw Denim Set JACKET">
+        <h2>Elixir Raw Denim Set JACKET</h2>
+        <p>$29.990</p>
+    </div>
+
+    <div class="producto">
+        <img src="img/5.png" alt="Elixir X Cozy DETACHABLE jeans">
+        <h2>Elixir X Cozy DETACHABLE jeans</h2>
+        <p>$89.990</p>
+    </div>
+
+    <div class="producto">
+        <img src="img/6.png" alt="Elixir White Leather Tribal Pants">
+        <h2>Elixir White Leather Tribal Pants</h2>
+        <p>$59.990</p>
+    </div>
+
+    <div class="producto">
+        <img src="img/7.png" alt="Elixir Gray Tank Top">
+        <h2>Elixir Gray Tank Top</h2>
+        <p>$19.990</p>
+    </div>
+
+        <div class="producto">
+        <img src="img/1.png" alt="Elixir Reversible Tribal Beanie">
+        <h2>Elixir Reversible Tribal Beanie</h2>
+        <p>$9.990</p>
+    </div>
+
+    <div class="producto">
+        <img src="img/3.png" alt="Elixir White Denim Set JORTS">
+        <h2>Elixir White Denim Set JORTS</h2>
+        <p>$29.990</p>
+    </div>
+
+    <div class="producto">
+        <img src="img/4.png" alt="Elixir Raw Denim Set JACKET">
+        <h2>Elixir Raw Denim Set JACKET</h2>
+        <p>$29.990</p>
+    </div>
+
+    <div class="producto">
+        <img src="img/5.png" alt="Elixir X Cozy DETACHABLE jeans">
+        <h2>Elixir X Cozy DETACHABLE jeans</h2>
+        <p>$89.990</p>
+    </div>
+
+    <div class="producto">
+        <img src="img/1.png" alt="Elixir Reversible Tribal Beanie">
+        <h2>Elixir Reversible Tribal Beanie</h2>
+        <p>$9.990</p>
+    </div>
+
+    <div class="producto">
+        <img src="img/3.png" alt="Elixir White Denim Set JORTS">
+        <h2>Elixir White Denim Set JORTS</h2>
+        <p>$29.990</p>
+    </div>
+
+    <div class="producto">
+        <img src="img/4.png" alt="Elixir Raw Denim Set JACKET">
+        <h2>Elixir Raw Denim Set JACKET</h2>
+        <p>$29.990</p>
+    </div>
+
+    <div class="producto">
+        <a href="producto.html">
+        <img src="img/5.png" alt="Elixir X Cozy DETACHABLE jeans">
+        </a>
+        <h2>Elixir X Cozy DETACHABLE jeans</h2>
+        <p>$89.990</p>
+    </div>
+
+</section>
+
+<footer>
+    <p>&copy; 2025 TumTum Ropa. Todos los derechos reservados.</p>
+</footer>
+
+<script src="java/colec.js" defer></script>
+</body>
+</html>
