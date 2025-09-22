@@ -1,0 +1,4 @@
+Administrador= admin@duoc.cl / Contraseña: admin123
+Vendedor= gabriel@gmail.com  / Contraseña: gabriel
+Cliente= carlos@duoc.cl  / Contraseña: carlos
+Cliente= pedro@duoc.cl  / Constraseña: pedro
