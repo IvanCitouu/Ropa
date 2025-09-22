@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("registro-form");
 
-  // 🗺️ Regiones y comunas
+  // Regiones y comunas
   const regionesYComunas = {
     "Región Metropolitana": ["Santiago", "Melipilla", "Puente Alto", "Maipú"],
     "Valparaíso": ["Valparaíso", "Viña del Mar", "Quillota"],
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 🧩 Validación y registro
+  // Validación y registro
   form.addEventListener("submit", e => {
     e.preventDefault();
 

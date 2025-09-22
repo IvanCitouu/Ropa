@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <button class="sumar" data-index="${index}">+</button>
         </td>
         <td>$${subtotal.toLocaleString("es-CL")}</td>
-        <td><button class="eliminar" data-index="${index}">❌</button></td>
+        <td><button class="eliminar" data-index="${index}">X</button></td>
       `;
       tbody.appendChild(fila);
     });
@@ -66,10 +66,10 @@ document.addEventListener("DOMContentLoaded", () => {
     renderCarrito();
   });
 
-  // ✅ Comprar y generar orden
+  //Comprar y generar orden
   btnComprar.addEventListener("click", () => {
     if (carrito.length === 0) {
-      alert("Tu carrito está vacío 😅");
+      alert("Tu carrito está vacío ");
       return;
     }
 
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.removeItem("carrito");
     renderCarrito();
 
-    alert(`Gracias por tu compra 🛍️\nOrden creada: ${nuevaOrden.id}`);
+    alert(`Gracias por tu compra \nOrden creada: ${nuevaOrden.id}`);
   });
 
   renderCarrito();

@@ -1,4 +1,3 @@
-// Base de datos de productos como objeto
 const productos = {
   camiseta: {
     nombre: "Camiseta de Fútbol Elixir 10 Navy Blue",
@@ -125,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
-    alert(`${producto.nombre} (talla ${tallaSeleccionada}) agregado al carrito ✅`);
+    alert(`${producto.nombre} (talla ${tallaSeleccionada}) agregado al carrito `);
   });
 
   // Header dinámico para usuario activo

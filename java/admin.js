@@ -20,7 +20,7 @@ if (usuarioActivo.rol === "vendedor") {
   // Ocultar botones de edición/eliminación
   document.querySelectorAll(".admin-only").forEach(btn => btn.style.display = "none");
 
-  // Ocultar otras vistas si las tienes
+  // Ocultar otras vistas
   const vistasNoPermitidas = ["perfil", "crear-producto", "crear-usuario"];
   vistasNoPermitidas.forEach(v => {
     const vista = document.getElementById("vista-" + v);
@@ -269,7 +269,7 @@ ordenes.forEach((o, i) => {
   document.getElementById("nuevo-stock-prod").value = p.stock;
   document.getElementById("nuevo-stock-critico-prod").value = p.stockCritico ?? "";
   document.getElementById("nuevo-categoria-prod").value = p.categoria;
-  document.getElementById("nuevo-estado-prod").value = p.estado ?? ""; // ✅ esta línea
+  document.getElementById("nuevo-estado-prod").value = p.estado ?? "";
 
   document.querySelector(".vista").classList.remove("active");
   document.getElementById("vista-productos").classList.add("active");
@@ -333,5 +333,3 @@ window.cambiarRolUsuario = function(index, nuevoRol) {
   localStorage.setItem("usuarios", JSON.stringify(usuarios));
   alert(`Rol actualizado a "${nuevoRol}" para ${usuarios[index].nombre}`);
 };
-
-

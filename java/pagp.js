@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const progressFill = document.getElementById('progress');
   let current = 0;
   const total = slides.length;
-  const intervalTime = 5000; // 5 segundos
+  const intervalTime = 5000;
 
   function showSlide(index) {
     slides.forEach((slide, i) => {

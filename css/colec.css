@@ -168,6 +168,11 @@ footer {
   border-radius: 10px;
 }
 
+.producto.resaltado {
+  outline: 3px solid #007bff;
+  transition: outline 0.3s ease;
+}
+
 .vista-grande .producto img {
   width: 300px;
 }

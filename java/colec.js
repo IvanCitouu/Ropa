@@ -1,33 +1,28 @@
-document.getElementById("sort").addEventListener("change", function() {
-    let productos = Array.from(document.querySelectorAll(".producto"));
-    let contenedor = document.querySelector(".productos");
+document.getElementById("sort")?.addEventListener("change", function () {
+  let productos = Array.from(document.querySelectorAll(".producto"));
+  let contenedor = document.querySelector(".productos");
 
-    let opcion = this.value;
+  let opcion = this.value;
 
-    productos.sort((a, b) => {
-        let precioA = parseInt(a.querySelector("p").textContent.replace(/\D/g, ""));
-        let precioB = parseInt(b.querySelector("p").textContent.replace(/\D/g, ""));
-        let nombreA = a.querySelector("h2").textContent.trim();
-        let nombreB = b.querySelector("h2").textContent.trim();
+  productos.sort((a, b) => {
+    let precioA = parseInt(a.querySelector("p").textContent.replace(/\D/g, ""));
+    let precioB = parseInt(b.querySelector("p").textContent.replace(/\D/g, ""));
+    let nombreA = a.querySelector("h2").textContent.trim();
+    let nombreB = b.querySelector("h2").textContent.trim();
 
-        if (opcion === "asc") {
-            return precioA - precioB; // menor a mayor
-        } else if (opcion === "desc") {
-            return precioB - precioA; // mayor a menor
-        } else if (opcion === "nombre") {
-            return nombreA.localeCompare(nombreB);
-        }
-    });
+    if (opcion === "asc") return precioA - precioB;
+    if (opcion === "desc") return precioB - precioA;
+    if (opcion === "nombre") return nombreA.localeCompare(nombreB);
+  });
 
-    contenedor.innerHTML = "";
-    productos.forEach(p => contenedor.appendChild(p));
+  contenedor.innerHTML = "";
+  productos.forEach(p => contenedor.appendChild(p));
 });
 
 function cambiarVista(vista, botonSeleccionado) {
   const contenedor = document.querySelector('.productos');
   contenedor.classList.remove('vista-grande', 'vista-mediano', 'vista-pequeño');
   contenedor.classList.add(`vista-${vista}`);
-  
 
   const botones = document.querySelectorAll('.view-button button');
   botones.forEach(btn => btn.classList.remove('activo'));
@@ -38,21 +33,18 @@ function cambiarVista(vista, botonSeleccionado) {
 window.addEventListener("DOMContentLoaded", () => {
   const contenedor = document.querySelector('.productos');
   contenedor.classList.add('vista-grande');
-
-  // Opcional: marcar el botón mediano como activo
   const botonGrande = document.querySelector('.view-button button:nth-child(1)');
   if (botonGrande) {
     botonGrande.classList.add('activo');
   }
 });
 
-document.getElementById("mostrar-buscador").addEventListener("click", function(e) {
+document.getElementById("mostrar-buscador").addEventListener("click", function (e) {
   e.preventDefault();
   document.getElementById("campo-busqueda").style.display = "block";
 });
 
-
-document.getElementById("buscar").addEventListener("input", function() {
+document.getElementById("buscar").addEventListener("input", function () {
   const texto = this.value.toLowerCase();
   const productos = document.querySelectorAll(".producto");
   let resultados = document.getElementById("resultados-busqueda");
@@ -65,7 +57,7 @@ document.getElementById("buscar").addEventListener("input", function() {
 
   resultados.innerHTML = "";
 
-  productos.forEach(producto => {
+  productos.forEach((producto, index) => {
     const nombre = producto.querySelector("h2").textContent.toLowerCase();
     const imagenSrc = producto.querySelector("img").getAttribute("src");
     const alt = producto.querySelector("img").getAttribute("alt");
@@ -73,6 +65,7 @@ document.getElementById("buscar").addEventListener("input", function() {
     if (nombre.includes(texto) && texto !== "") {
       const item = document.createElement("div");
       item.classList.add("resultado-item");
+      item.setAttribute("data-index", index);
 
       item.innerHTML = `
         <img src="${imagenSrc}" alt="${alt}">
@@ -82,9 +75,28 @@ document.getElementById("buscar").addEventListener("input", function() {
       resultados.appendChild(item);
     }
   });
+
+  document.querySelectorAll(".resultado-item").forEach(item => {
+    item.addEventListener("click", () => {
+      const index = item.getAttribute("data-index");
+      const producto = document.querySelectorAll(".producto")[index];
+      if (producto) {
+        producto.scrollIntoView({ behavior: "smooth", block: "center" });
+        producto.classList.add("resaltado");
+
+        setTimeout(() => {
+          producto.classList.remove("resaltado");
+        }, 1500);
+      }
+
+      document.getElementById("campo-busqueda").style.display = "none";
+      document.getElementById("buscar").value = "";
+      document.getElementById("resultados-busqueda").innerHTML = "";
+    });
+  });
 });
 
-document.getElementById("cerrar-buscador").addEventListener("click", function() {
+document.getElementById("cerrar-buscador").addEventListener("click", function () {
   document.getElementById("campo-busqueda").style.display = "none";
   document.getElementById("buscar").value = "";
   document.getElementById("resultados-busqueda").innerHTML = "";
@@ -132,15 +144,8 @@ if (usuario) {
   });
 
   // Mostrar buscador
-  document.getElementById("mostrar-buscador").addEventListener("click", function(e) {
+  document.getElementById("mostrar-buscador").addEventListener("click", function (e) {
     e.preventDefault();
     document.getElementById("campo-busqueda").style.display = "block";
   });
 }
-
-
-
-
-
-
-

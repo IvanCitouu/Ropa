@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 🧩 Validación del formulario de contacto
+  // Validación del formulario de contacto
   const form = document.getElementById("form-contacto");
   if (!form) return;
 
