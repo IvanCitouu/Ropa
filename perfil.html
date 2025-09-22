@@ -30,12 +30,49 @@
 <main>
   <h1>Mi Perfil</h1>
   <form id="perfil-form">
-    <input type="email" id="perfil-correo" disabled>
-    <input type="text" id="perfil-nombre" placeholder="Nombre">
-    <input type="text" id="perfil-direccion" placeholder="Dirección">
-    <input type="text" id="perfil-telefono" placeholder="Teléfono">
+    <div class="campo">
+      <label for="perfil-run">RUN</label>
+      <input type="text" id="perfil-run" disabled>
+    </div>
+
+    <div class="campo">
+      <label for="perfil-correo">Correo</label>
+      <input type="email" id="perfil-correo" disabled>
+    </div>
+
+    <div class="campo">
+      <label for="perfil-nombre">Nombre</label>
+      <input type="text" id="perfil-nombre" required maxlength="50">
+    </div>
+
+    <div class="campo">
+      <label for="perfil-apellidos">Apellidos</label>
+      <input type="text" id="perfil-apellidos" required maxlength="100">
+    </div>
+
+    <div class="campo">
+      <label for="perfil-fecha">Fecha de nacimiento</label>
+      <input type="date" id="perfil-fecha">
+    </div>
+
+    <div class="campo">
+      <label for="perfil-region">Región</label>
+      <input type="text" id="perfil-region" disabled>
+    </div>
+
+    <div class="campo">
+      <label for="perfil-comuna">Comuna</label>
+      <input type="text" id="perfil-comuna" disabled>
+    </div>
+
+    <div class="campo">
+      <label for="perfil-direccion">Dirección</label>
+      <input type="text" id="perfil-direccion" required maxlength="300">
+    </div>
+
     <button type="submit">Guardar cambios</button>
   </form>
+
 </main>
 
 <footer>

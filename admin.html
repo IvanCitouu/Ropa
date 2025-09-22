@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel - TumTum</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">TumTum</div>
+    <nav>
+      <ul>
+        <li><a href="#" data-vista="home" class="solo-admin">Inicio</a></li>
+        <li><a href="#" data-vista="usuarios" class="solo-admin">Usuarios</a></li>
+        <li><a href="#" data-vista="productos">Productos</a></li>
+        <li><a href="#" data-vista="ordenes">Órdenes</a></li>
+        <li><a href="#" id="cerrar-sesion">Cerrar sesión</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="contenido">
+    <section id="vista-home" class="vista active solo-admin">
+      <h1>¡Hola Administrador!</h1>
+      <p>Bienvenido al panel de control de TumTum.</p>
+      <p id="info-usuario"></p>
+    </section>
+
+    <section id="vista-usuarios" class="vista solo-admin">
+      <h2>Usuarios registrados</h2>
+      <table>
+        <thead>
+          <tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Acciones</th></tr>
+        </thead>
+        <tbody id="tabla-usuarios"></tbody>
+      </table>
+
+      <h3>Crear o editar usuario</h3>
+      <form id="form-nuevo-usuario" class="solo-admin">
+        <!-- Campos del formulario -->
+        <label>RUN *</label>
+        <input type="text" id="nuevo-run" required minlength="7" maxlength="9">
+        <label>Nombre *</label>
+        <input type="text" id="nuevo-nombre" required maxlength="50">
+        <label>Apellidos *</label>
+        <input type="text" id="nuevo-apellidos" required maxlength="100">
+        <label>Correo *</label>
+        <input type="email" id="nuevo-email" required maxlength="100">
+        <label>Fecha de nacimiento</label>
+        <input type="date" id="nuevo-fecha">
+        <label>Tipo de usuario *</label>
+        <select id="nuevo-rol" required>
+          <option value="">Seleccione un perfil</option>
+          <option value="administrador">Administrador</option>
+          <option value="cliente">Cliente</option>
+          <option value="vendedor">Vendedor</option>
+        </select>
+        <label>Región *</label>
+        <select id="nuevo-region" required></select>
+        <label>Comuna *</label>
+        <select id="nuevo-comuna" required></select>
+        <label>Dirección *</label>
+        <input type="text" id="nuevo-direccion" required maxlength="300">
+        <button type="submit">Guardar usuario</button>
+      </form>
+    </section>
+
+    <section id="vista-productos" class="vista">
+      <h2>Productos disponibles</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Descripción</th>
+            <th>Estado</th>
+            <th>Categoría</th>
+            <th>Imagen</th>
+            <th class="admin-only">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-productos"></tbody>
+      </table>
+
+      <h3 class="solo-admin">Crear o editar producto</h3>
+      <form id="form-nuevo-producto" class="solo-admin">
+      <label for="nuevo-codigo-prod">Código producto *</label>
+      <input type="text" id="nuevo-codigo-prod" placeholder="Ej: P001" required minlength="3">
+
+      <label for="nuevo-nombre-prod">Nombre *</label>
+      <input type="text" id="nuevo-nombre-prod" placeholder="Nombre del producto" required maxlength="100">
+
+      <label for="nuevo-descripcion-prod">Descripción</label>
+      <textarea id="nuevo-descripcion-prod" placeholder="Descripción del producto" maxlength="500"></textarea>
+
+      <label for="nuevo-precio-prod">Precio *</label>
+      <input type="number" id="nuevo-precio-prod" placeholder="Ej: 19990" required min="0" step="0.01">
+
+      <label for="nuevo-stock-prod">Stock *</label>
+      <input type="number" id="nuevo-stock-prod" placeholder="Cantidad disponible" required min="0" step="1">
+
+      <label for="nuevo-stock-critico-prod">Stock crítico</label>
+      <input type="number" id="nuevo-stock-critico-prod" placeholder="Ej: 5" min="0" step="1">
+
+      <label for="nuevo-estado-prod">Estado *</label>
+      <select id="nuevo-estado-prod" required>
+        <option value="">Seleccione estado</option>
+        <option value="Disponible">Disponible</option>
+        <option value="Agotado">Agotado</option>
+        <option value="Descontinuado">Descontinuado</option>
+      </select>
+
+      <label for="nuevo-categoria-prod">Categoría *</label>
+      <select id="nuevo-categoria-prod" required>
+        <option value="">Seleccione una categoría</option>
+        <option value="ropa">Ropa</option>
+        <option value="accesorios">Accesorios</option>
+        <option value="calzado">Calzado</option>
+      </select>
+
+      <label for="nuevo-img-prod">Imagen (URL)</label>
+      <input type="file" id="nuevo-img-prod" accept="image/*">
+
+      <button type="submit">Guardar producto</button>
+      </form>
+    </section>
+
+    <section id="vista-ordenes" class="vista">
+      <h2>Órdenes registradas</h2>
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Cliente</th><th>Total</th><th>Estado</th></tr>
+        </thead>
+        <tbody id="tabla-ordenes"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="java/admin.js" defer></script>
+</body>
+</html>

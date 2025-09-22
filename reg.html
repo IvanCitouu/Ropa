@@ -33,11 +33,33 @@
     <div class="login-container">
         <h2>Registrarse</h2>
         <form id="registro-form">
-            <input type="text" id="registro-nombre" placeholder="Nombre completo" required>
-            <input type="email" id="registro-email" placeholder="Correo" required>
-            <input type="password" id="registro-password" placeholder="Contraseña" required>
-            <input type="text" id="registro-direccion" placeholder="Dirección">
-            <input type="text" id="registro-telefono" placeholder="Teléfono">
+            <label for="reg-run">RUN *</label>
+            <input type="text" id="reg-run" placeholder="Ej: 19011022K" required minlength="7" maxlength="9">
+
+            <label for="reg-nombre">Nombre *</label>
+            <input type="text" id="reg-nombre" placeholder="Nombre" required maxlength="50">
+
+            <label for="reg-apellidos">Apellidos *</label>
+            <input type="text" id="reg-apellidos" placeholder="Apellidos" required maxlength="100">
+
+            <label for="reg-email">Correo *</label>
+            <input type="email" id="reg-email" placeholder="Correo electrónico" required maxlength="100">
+
+            <label for="reg-fecha">Fecha de nacimiento</label>
+            <input type="date" id="reg-fecha">
+
+            <label for="reg-region">Región *</label>
+            <select id="reg-region" required></select>
+
+            <label for="reg-comuna">Comuna *</label>
+            <select id="reg-comuna" required></select>
+
+             <label for="reg-direccion">Dirección *</label>
+            <input type="text" id="reg-direccion" placeholder="Dirección completa" required maxlength="300">
+
+            <label for="reg-password">Contraseña *</label>
+            <input type="password" id="reg-password" placeholder="Contraseña" required minlength="6">
+
             <button type="submit">Registrarse</button>
 
             <div class="register-link">

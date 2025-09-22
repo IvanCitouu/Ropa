@@ -9,85 +9,50 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  const usuario = usuarios.find(u => u.email === usuarioActivo.email);
-  if (usuario) {
-    document.getElementById("perfil-correo").value = usuario.email;
-    document.getElementById("perfil-nombre").value = usuario.nombre || "";
-    document.getElementById("perfil-direccion").value = usuario.direccion || "";
-    document.getElementById("perfil-telefono").value = usuario.telefono || "";
-  }
+  // Cargar datos en el formulario
+  document.getElementById("perfil-run").value = usuarioActivo.run || "";
+  document.getElementById("perfil-correo").value = usuarioActivo.email || "";
+  document.getElementById("perfil-nombre").value = usuarioActivo.nombre || "";
+  document.getElementById("perfil-apellidos").value = usuarioActivo.apellidos || "";
+  document.getElementById("perfil-fecha").value = usuarioActivo.fecha || "";
+  document.getElementById("perfil-region").value = usuarioActivo.region || "";
+  document.getElementById("perfil-comuna").value = usuarioActivo.comuna || "";
+  document.getElementById("perfil-direccion").value = usuarioActivo.direccion || "";
 
+  // Guardar cambios
   form.addEventListener("submit", e => {
     e.preventDefault();
 
-    usuario.nombre = document.getElementById("perfil-nombre").value.trim();
-    usuario.direccion = document.getElementById("perfil-direccion").value.trim();
-    usuario.telefono = document.getElementById("perfil-telefono").value.trim();
+    usuarioActivo.nombre = document.getElementById("perfil-nombre").value.trim();
+    usuarioActivo.apellidos = document.getElementById("perfil-apellidos").value.trim();
+    usuarioActivo.fecha = document.getElementById("perfil-fecha").value;
+    usuarioActivo.direccion = document.getElementById("perfil-direccion").value.trim();
 
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
-    localStorage.setItem("usuarioActivo", JSON.stringify(usuario));
-    alert("Perfil actualizado");
+    // Validaciones
+    if (!usuarioActivo.nombre || usuarioActivo.nombre.length > 50) {
+      alert("Nombre requerido, máximo 50 caracteres.");
+      return;
+    }
+
+    if (!usuarioActivo.apellidos || usuarioActivo.apellidos.length > 100) {
+      alert("Apellidos requeridos, máximo 100 caracteres.");
+      return;
+    }
+
+    if (!usuarioActivo.direccion || usuarioActivo.direccion.length > 300) {
+      alert("Dirección requerida, máximo 300 caracteres.");
+      return;
+    }
+
+    // Actualizar en localStorage
+    localStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
+
+    const index = usuarios.findIndex(u => u.email === usuarioActivo.email);
+    if (index >= 0) {
+      usuarios[index] = usuarioActivo;
+      localStorage.setItem("usuarios", JSON.stringify(usuarios));
+    }
+
+    alert("Perfil actualizado correctamente");
   });
 });
-
-const acciones = document.getElementById("acciones-header");
-const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
-
-if (usuario) {
-  acciones.innerHTML = `
-    <div class="perfil-dropdown" id="perfil-dropdown">
-      <div class="perfil-trigger" id="perfil-trigger">
-        <img src="img/Inicio.jpg" alt="Perfil" class="icono-perfil">
-        <span class="saludo-usuario" id="saludo-usuario">Hola, ${usuario.nombre}</span>
-      </div>
-      <div class="menu-perfil" id="menu-perfil">
-        <a href="perfil.html">Editar perfil</a>
-        <a href="carrito.html">Mi carrito</a>
-      </div>
-    </div>
-    <button id="cerrar-sesion">Cerrar cuenta</button>
-    <a href="#" id="mostrar-buscador"><img src="img/Lupa.jpg" alt="Buscar"></a>
-    <a href="carrito.html" id="mostrar-buscador"><img src="img/Carro.jpg" alt="Buscar"></a>
-  `;
-
-  const inputNombre = document.getElementById("perfil-nombre");
-  const saludo = document.getElementById("saludo-usuario");
-
-  if (inputNombre && saludo) {
-    inputNombre.addEventListener("input", () => {
-      const nuevoNombre = inputNombre.value.trim();
-      saludo.textContent = nuevoNombre ? `Hola, ${nuevoNombre}` : "Hola";
-    });
-  }
-
-  // Mostrar/ocultar menú al hacer clic
-  const perfilTrigger = document.getElementById("perfil-trigger");
-  const menuPerfil = document.getElementById("menu-perfil");
-
-  perfilTrigger.addEventListener("click", () => {
-    menuPerfil.style.display = menuPerfil.style.display === "block" ? "none" : "block";
-  });
-
-  document.addEventListener("click", (e) => {
-    if (!document.getElementById("perfil-dropdown").contains(e.target)) {
-      menuPerfil.style.display = "none";
-    }
-  });
-
-  // Cerrar sesión
-  document.getElementById("cerrar-sesion").addEventListener("click", () => {
-    localStorage.removeItem("usuarioActivo");
-    alert("Sesión cerrada");
-    window.location.href = "pagp.html";
-  });
-
-  // Mostrar buscador
-  document.getElementById("mostrar-buscador").addEventListener("click", function(e) {
-    e.preventDefault();
-    document.getElementById("campo-busqueda").style.display = "block";
-  });
-
-  const buscadorIcono = document.getElementById("mostrar-buscador");
-if (buscadorIcono) buscadorIcono.remove();
-
-}

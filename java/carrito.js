@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  // Función para renderizar el carrito
   function renderCarrito() {
     tbody.innerHTML = "";
     let total = 0;
@@ -17,20 +16,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const fila = document.createElement("tr");
       fila.innerHTML = `
-      <td>
-        <img src="${item.imagen}" alt="${item.nombre}" width="50">
-        <p>${item.nombre}</p>
-        <small>Talla: ${item.talla}</small>
-      </td>
-      <td>$${item.precio.toLocaleString("es-CL")}</td>
-      <td>
-        <button class="restar" data-index="${index}">-</button>
-        ${item.cantidad}
-        <button class="sumar" data-index="${index}">+</button>
-      </td>
-      <td>$${subtotal.toLocaleString("es-CL")}</td>
-      <td><button class="eliminar" data-index="${index}">❌</button></td>
-    `;
+        <td>
+          <img src="${item.imagen}" alt="${item.nombre}" width="50">
+          <p>${item.nombre}</p>
+          <small>Talla: ${item.talla}</small>
+        </td>
+        <td>$${item.precio.toLocaleString("es-CL")}</td>
+        <td>
+          <button class="restar" data-index="${index}">-</button>
+          ${item.cantidad}
+          <button class="sumar" data-index="${index}">+</button>
+        </td>
+        <td>$${subtotal.toLocaleString("es-CL")}</td>
+        <td><button class="eliminar" data-index="${index}">❌</button></td>
+      `;
       tbody.appendChild(fila);
     });
 
@@ -38,19 +37,16 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }
 
-  // Delegación de eventos
   tbody.addEventListener("click", e => {
+    const index = e.target.dataset.index;
     if (e.target.classList.contains("eliminar")) {
-      const index = e.target.dataset.index;
-      const confirmacion = confirm(`¿Eliminar "${carrito[index].nombre}" del carrito?`);
-      if (confirmacion) {
+      if (confirm(`¿Eliminar "${carrito[index].nombre}" del carrito?`)) {
         carrito.splice(index, 1);
         renderCarrito();
       }
     }
 
     if (e.target.classList.contains("restar")) {
-      const index = e.target.dataset.index;
       if (carrito[index].cantidad > 1) {
         carrito[index].cantidad--;
       } else {
@@ -59,33 +55,48 @@ document.addEventListener("DOMContentLoaded", () => {
       renderCarrito();
     }
 
-        if (e.target.classList.contains("sumar")) {
-    const index = e.target.dataset.index;
-    carrito[index].cantidad++;
-    renderCarrito();
-    } 
+    if (e.target.classList.contains("sumar")) {
+      carrito[index].cantidad++;
+      renderCarrito();
+    }
   });
 
-  // Vaciar carrito
   btnVaciar.addEventListener("click", () => {
     carrito = [];
     renderCarrito();
   });
 
-  // Comprar (simulado)
+  // ✅ Comprar y generar orden
   btnComprar.addEventListener("click", () => {
     if (carrito.length === 0) {
       alert("Tu carrito está vacío 😅");
       return;
     }
-    alert("Gracias por tu compra 🛍️");
+
+    const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
+    const ordenes = JSON.parse(localStorage.getItem("ordenes")) || [];
+
+    const nuevaOrden = {
+      id: "ORD" + (ordenes.length + 1).toString().padStart(3, "0"),
+      cliente: usuario?.nombre || usuario?.email || "Invitado",
+      total: carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0),
+      estado: "Pendiente"
+    };
+
+    ordenes.push(nuevaOrden);
+    localStorage.setItem("ordenes", JSON.stringify(ordenes));
+
     carrito = [];
+    localStorage.removeItem("carrito");
     renderCarrito();
+
+    alert(`Gracias por tu compra 🛍️\nOrden creada: ${nuevaOrden.id}`);
   });
 
   renderCarrito();
 });
 
+// Header dinámico
 const acciones = document.getElementById("acciones-header");
 const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
 
@@ -103,10 +114,9 @@ if (usuario) {
     </div>
     <button id="cerrar-sesion">Cerrar cuenta</button>
     <a href="#" id="mostrar-buscador"><img src="img/Lupa.jpg" alt="Buscar"></a>
-    <a href="carrito.html" id="mostrar-buscador"><img src="img/Carro.jpg" alt="Buscar"></a>
+    <a href="carrito.html"><img src="img/Carro.jpg" alt="Carro"></a>
   `;
 
-  // Mostrar/ocultar menú al hacer clic
   const perfilTrigger = document.getElementById("perfil-trigger");
   const menuPerfil = document.getElementById("menu-perfil");
 
@@ -120,19 +130,15 @@ if (usuario) {
     }
   });
 
-  // Cerrar sesión
   document.getElementById("cerrar-sesion").addEventListener("click", () => {
     localStorage.removeItem("usuarioActivo");
     alert("Sesión cerrada");
     window.location.href = "pagp.html";
   });
 
-  // Mostrar buscador
   document.getElementById("mostrar-buscador").addEventListener("click", function(e) {
     e.preventDefault();
-    document.getElementById("campo-busqueda").style.display = "block";
+    const campo = document.getElementById("campo-busqueda");
+    if (campo) campo.style.display = "block";
   });
-
-  const buscadorIcono = document.getElementById("mostrar-buscador");
-if (buscadorIcono) buscadorIcono.remove();
 }
